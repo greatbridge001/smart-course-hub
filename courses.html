@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Recommendations — SmartFuture Career Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      SmartFuture
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html" class="active">Courses</a></li>
+      <li><a href="universities.html">Universities</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>🎓 Course Recommendations</h1>
+  <p>Enter your KCSE grades below to get your personalized KUCCPS course recommendations with cluster points.</p>
+</div>
+
+<!-- MAIN SECTION -->
+<section class="section">
+  <div class="section-container">
+    <div class="grade-form">
+      <div class="form-title">📝 Enter Your KCSE Grades</div>
+      <div class="form-subtitle">Fill in your mean grade and subjects. You'll unlock full results after a KSh 1 verification payment.</div>
+
+      <!-- MEAN GRADE -->
+      <div class="form-row">
+        <label class="form-label" for="meanGrade">🎯 KCSE Mean Grade *</label>
+        <select class="form-select" id="meanGrade" required>
+          <option value="">-- Select Mean Grade --</option>
+          <option value="A">A (Plain)</option>
+          <option value="A-">A- (Minus)</option>
+          <option value="B+">B+ (Plus)</option>
+          <option value="B">B (Plain)</option>
+          <option value="B-">B- (Minus)</option>
+          <option value="C+">C+ (Plus)</option>
+        </select>
+      </div>
+
+      <!-- SUBJECTS -->
+      <div class="form-row">
+        <label class="form-label">📚 Subject Grades (fill what you did)</label>
+        <div class="subjects-grid">
+          <!-- Row 1 -->
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Mathematics</label>
+            <select class="form-select" id="subj_Math">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">English</label>
+            <select class="form-select" id="subj_English">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Biology</label>
+            <select class="form-select" id="subj_Biology">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Chemistry</label>
+            <select class="form-select" id="subj_Chemistry">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Physics</label>
+            <select class="form-select" id="subj_Physics">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">History</label>
+            <select class="form-select" id="subj_History">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Geography</label>
+            <select class="form-select" id="subj_Geography">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Kiswahili</label>
+            <select class="form-select" id="subj_Kiswahili">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">CRE / IRE</label>
+            <select class="form-select" id="subj_CRE">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Business Studies</label>
+            <select class="form-select" id="subj_Business">
+              <option value="">-- Grade --</option>
+              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
+              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;" onclick="openPaymentModal()">
+        🔍 Analyse My Grades &amp; Get Recommendations
+      </button>
+
+      <p style="text-align:center;margin-top:12px;font-size:0.82rem;color:var(--gray);">🔒 Secure · ✅ KUCCPS Aligned · 💳 KSh 1 verification required</p>
+    </div>
+
+    <!-- RESULTS (shown after payment) -->
+    <div class="results-section" id="resultsSection">
+      <div class="results-header">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:4px">🎓 Your Recommended Courses</div>
+            <div style="font-size:0.85rem;opacity:0.85">Based on your KCSE grades · KUCCPS Aligned · Includes Cluster Points</div>
+          </div>
+          <button class="btn btn-orange" onclick="downloadResults()" style="gap:8px;padding:12px 20px;font-size:0.88rem">
+            📥 Download Report
+          </button>
+        </div>
+      </div>
+      <div class="results-body">
+        <div id="resultsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <div class="modal-icon">🎓</div>
+    <div class="modal-title">Course Matching Ready!</div>
+    <div class="modal-desc">To view your personalized KUCCPS degree recommendations, complete a small verification payment.</div>
+
+    <div class="payment-features">
+      <div class="payment-feature">✅ Fast &amp; secure M-PESA STK Push</div>
+      <div class="payment-feature">✅ Unlocks full course list + cluster points</div>
+      <div class="payment-feature">✅ Includes downloadable report</div>
+    </div>
+
+    <div style="background:var(--blue-light);border-radius:12px;padding:14px;margin-bottom:20px;text-align:left;">
+      <div style="font-size:0.78rem;color:var(--gray);margin-bottom:4px">Amount</div>
+      <div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:var(--blue)">KSh 1</div>
+      <div style="font-size:0.78rem;color:var(--gray)">One-time verification fee</div>
+    </div>
+
+    <div class="form-row" style="text-align:left;margin-bottom:16px">
+      <label class="form-label">📱 Your M-PESA Phone Number</label>
+      <input type="tel" class="form-input" id="payPhone" placeholder="07XXXXXXXX or 01XXXXXXXX" />
+    </div>
+
+    <div id="payStatus" style="margin-bottom:16px"></div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button class="btn btn-green" id="payBtn" onclick="initiatePayment()" style="justify-content:center;font-size:1rem;padding:16px">
+        💳 Pay KSh 1 Now
+      </button>
+      <button class="btn" id="checkStatusBtn" onclick="checkPaymentStatus()" style="justify-content:center;background:var(--blue-light);color:var(--blue);padding:12px;display:none">
+        🔄 Check Payment Status
+      </button>
+      <button onclick="closePaymentModal()" style="background:none;border:none;color:var(--gray);font-size:0.85rem;cursor:pointer;padding:8px">
+        ✕ Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <div class="whatsapp-tooltip">💬 Chat with us on WhatsApp</div>
+  <a href="https://wa.me/254769642043" target="_blank" class="whatsapp-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="nav-logo" style="color:white;margin-bottom:0"><div class="logo-icon">🎓</div>SmartFuture Career Hub</div>
+      <p class="footer-brand-desc">Empowering Kenyan students with accurate KUCCPS career guidance.</p>
+    </div>
+    <div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="index.html">🏠 Home</a></li><li><a href="courses.html">🎓 Courses</a></li><li><a href="universities.html">🏫 Universities</a></li><li><a href="resources.html">📚 Resources</a></li></ul></div>
+    <div><div class="footer-col-title">Info</div><ul class="footer-links"><li><a href="about.html">ℹ️ About</a></li><li><a href="contact.html">📞 Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0769642043">📱 0769 642 043</a></li><li><a href="tel:0711416574">📱 0711 416 574</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 SmartFuture Career Hub</span><span>Built for 🇰🇪 Kenyan Students</span></div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/recommender.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universities — SmartFuture Career Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">🎓</div>SmartFuture</a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="universities.html" class="active">Universities</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>🏫 University Directory</h1>
+  <p>Browse all public and private universities in Kenya. Filter by county or search by name to find your ideal campus.</p>
+</div>
+
+<section class="section">
+  <div class="section-container">
+
+    <!-- STATS BADGES -->
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px">
+      <div style="background:var(--blue-light);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:2rem">🏛️</span>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--blue)">18</div>
+          <div style="font-size:0.8rem;color:var(--gray);font-weight:500">Public Universities</div>
+        </div>
+      </div>
+      <div style="background:var(--orange-light);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:2rem">🏢</span>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--orange)">10</div>
+          <div style="font-size:0.8rem;color:var(--gray);font-weight:500">Private Universities</div>
+        </div>
+      </div>
+      <div style="background:var(--green-light);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:2rem">🗺️</span>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--green-dark)">15+</div>
+          <div style="font-size:0.8rem;color:var(--gray);font-weight:500">Counties Covered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEARCH + FILTER -->
+    <div class="uni-search-bar">
+      <input type="text" class="uni-search-input" id="uniSearch" placeholder="🔍 Search university or county..." />
+      <select class="uni-county-filter" id="countyFilter">
+        <option value="all">All Counties</option>
+      </select>
+    </div>
+
+    <!-- TABS -->
+    <div class="uni-tabs">
+      <button class="uni-tab active" data-type="all">🏫 All Universities</button>
+      <button class="uni-tab" data-type="public">🏛️ Public</button>
+      <button class="uni-tab" data-type="private">🏢 Private</button>
+    </div>
+
+    <!-- LIST -->
+    <div id="uniList"></div>
+
+    <!-- LEGEND -->
+    <div style="margin-top:24px;padding:16px 20px;background:white;border-radius:12px;border:1px solid var(--gray-light);display:flex;gap:20px;flex-wrap:wrap;font-size:0.82rem;color:var(--gray)">
+      <span><span class="uni-type-badge badge-public">Public</span> — Funded by the Government of Kenya</span>
+      <span><span class="uni-type-badge badge-private">Private</span> — Privately funded/chartered</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<div class="whatsapp-float">
+  <div class="whatsapp-tooltip">💬 Chat with us on WhatsApp</div>
+  <a href="https://wa.me/254769642043" target="_blank" class="whatsapp-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="nav-logo" style="color:white;margin-bottom:0"><div class="logo-icon">🎓</div>SmartFuture Career Hub</div><p class="footer-brand-desc">Empowering Kenyan students with accurate KUCCPS career guidance.</p></div>
+    <div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="index.html">🏠 Home</a></li><li><a href="courses.html">🎓 Courses</a></li><li><a href="universities.html">🏫 Universities</a></li><li><a href="resources.html">📚 Resources</a></li></ul></div>
+    <div><div class="footer-col-title">Info</div><ul class="footer-links"><li><a href="about.html">ℹ️ About</a></li><li><a href="contact.html">📞 Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0769642043">📱 0769 642 043</a></li><li><a href="tel:0711416574">📱 0711 416 574</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 SmartFuture Career Hub</span><span>Built for 🇰🇪 Kenyan Students</span></div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/universities.js"></script>
+</body>
+</html>
