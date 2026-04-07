@@ -6,6 +6,63 @@
   <title>Course Recommendations — SmartFuture Career Hub</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>"/>
+  <style>
+    /* ===== MOBILE MODAL FIX ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,15,30,0.78);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal {
+      background: white;
+      border-radius: 20px;
+      padding: 24px 20px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 24px;
+      transform: translateY(-10px);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+    @media (min-width: 640px) {
+      .modal-overlay {
+        align-items: center;
+        padding: 24px;
+      }
+      .modal {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 40px;
+      }
+    }
+    .subj-category {
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin: 16px 0 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,7 +96,7 @@
   <div class="section-container">
     <div class="grade-form">
       <div class="form-title">📝 Enter Your KCSE Grades</div>
-      <div class="form-subtitle">Fill in your mean grade and subjects. You'll unlock full results after a KSh 1 verification payment.</div>
+      <div class="form-subtitle">Select your mean grade and fill in the subjects you sat. Leave blank any subject you did not do.</div>
 
       <!-- MEAN GRADE -->
       <div class="form-row">
@@ -57,101 +114,154 @@
 
       <!-- SUBJECTS -->
       <div class="form-row">
-        <label class="form-label">📚 Subject Grades (fill what you did)</label>
+        <label class="form-label">📚 Subject Grades (fill only what you did)</label>
+
+        <!-- COMPULSORY -->
+        <div class="subj-category" style="background:var(--blue-light);color:var(--blue)">📌 Compulsory Subjects</div>
         <div class="subjects-grid">
-          <!-- Row 1 -->
           <div>
             <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Mathematics</label>
-            <select class="form-select" id="subj_Math">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
+            <select class="form-select" id="subj_Math"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
           </div>
           <div>
             <label class="form-label" style="font-size:0.8rem;color:var(--gray)">English</label>
-            <select class="form-select" id="subj_English">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Biology</label>
-            <select class="form-select" id="subj_Biology">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Chemistry</label>
-            <select class="form-select" id="subj_Chemistry">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Physics</label>
-            <select class="form-select" id="subj_Physics">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">History</label>
-            <select class="form-select" id="subj_History">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Geography</label>
-            <select class="form-select" id="subj_Geography">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
+            <select class="form-select" id="subj_English"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
           </div>
           <div>
             <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Kiswahili</label>
-            <select class="form-select" id="subj_Kiswahili">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
+            <select class="form-select" id="subj_Kiswahili"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+        </div>
+
+        <!-- SCIENCES -->
+        <div class="subj-category" style="background:var(--green-light);color:var(--green-dark)">🔬 Sciences</div>
+        <div class="subjects-grid">
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Biology</label>
+            <select class="form-select" id="subj_Biology"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
           </div>
           <div>
-            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">CRE / IRE</label>
-            <select class="form-select" id="subj_CRE">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Chemistry</label>
+            <select class="form-select" id="subj_Chemistry"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
           </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Physics</label>
+            <select class="form-select" id="subj_Physics"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+        </div>
+
+        <!-- HUMANITIES -->
+        <div class="subj-category" style="background:var(--orange-light);color:var(--orange)">📖 Humanities & Social Sciences</div>
+        <div class="subjects-grid">
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">History & Government</label>
+            <select class="form-select" id="subj_History"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Geography</label>
+            <select class="form-select" id="subj_Geography"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">CRE</label>
+            <select class="form-select" id="subj_CRE"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">IRE</label>
+            <select class="form-select" id="subj_IRE"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">HRE</label>
+            <select class="form-select" id="subj_HRE"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+        </div>
+
+        <!-- BUSINESS & TECHNICAL -->
+        <div class="subj-category" style="background:#f3e8ff;color:var(--purple)">💼 Business & Technical</div>
+        <div class="subjects-grid">
           <div>
             <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Business Studies</label>
-            <select class="form-select" id="subj_Business">
-              <option value="">-- Grade --</option>
-              <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-              <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-            </select>
+            <select class="form-select" id="subj_Business"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Economics</label>
+            <select class="form-select" id="subj_Economics"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Computer Studies</label>
+            <select class="form-select" id="subj_Computer"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Agriculture</label>
+            <select class="form-select" id="subj_Agriculture"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Home Science</label>
+            <select class="form-select" id="subj_HomeScience"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Building & Construction</label>
+            <select class="form-select" id="subj_Building"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Power Mechanics</label>
+            <select class="form-select" id="subj_PowerMechanics"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Electricity</label>
+            <select class="form-select" id="subj_Electricity"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Woodwork</label>
+            <select class="form-select" id="subj_Woodwork"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Metalwork</label>
+            <select class="form-select" id="subj_Metalwork"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Drawing & Design</label>
+            <select class="form-select" id="subj_Drawing"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Aviation Technology</label>
+            <select class="form-select" id="subj_Aviation"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+        </div>
+
+        <!-- LANGUAGES & ARTS -->
+        <div class="subj-category" style="background:#e8f5e9;color:#2e7d32">🎨 Languages & Arts</div>
+        <div class="subjects-grid">
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">French</label>
+            <select class="form-select" id="subj_French"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">German</label>
+            <select class="form-select" id="subj_German"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Arabic</label>
+            <select class="form-select" id="subj_Arabic"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Music</label>
+            <select class="form-select" id="subj_Music"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.8rem;color:var(--gray)">Art & Design</label>
+            <select class="form-select" id="subj_Art"><option value="">-- Grade --</option><option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option></select>
           </div>
         </div>
       </div>
 
       <!-- SUBMIT -->
-      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;" onclick="openPaymentModal()">
+      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;margin-top:8px" onclick="openPaymentModal()">
         🔍 Analyse My Grades &amp; Get Recommendations
       </button>
-
-      <p style="text-align:center;margin-top:12px;font-size:0.82rem;color:var(--gray);">🔒 Secure · ✅ KUCCPS Aligned · 💳 KSh 1 verification required</p>
+      <p style="text-align:center;margin-top:12px;font-size:0.82rem;color:var(--gray);">🔒 Secure · ✅ KUCCPS Aligned · 💳 KSh 150 one-time fee</p>
     </div>
 
-    <!-- RESULTS (shown after payment) -->
+    <!-- RESULTS -->
     <div class="results-section" id="resultsSection">
       <div class="results-header">
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
@@ -159,24 +269,20 @@
             <div style="font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:4px">🎓 Your Recommended Courses</div>
             <div style="font-size:0.85rem;opacity:0.85">Based on your KCSE grades · KUCCPS Aligned · Includes Cluster Points</div>
           </div>
-          <button class="btn btn-orange" onclick="downloadResults()" style="gap:8px;padding:12px 20px;font-size:0.88rem">
-            📥 Download Report
-          </button>
+          <button class="btn btn-orange" onclick="downloadResults()" style="gap:8px;padding:12px 20px;font-size:0.88rem">📥 Download Report</button>
         </div>
       </div>
-      <div class="results-body">
-        <div id="resultsList"></div>
-      </div>
+      <div class="results-body"><div id="resultsList"></div></div>
     </div>
   </div>
 </section>
 
-<!-- PAYMENT MODAL -->
+<!-- PAYMENT MODAL — scrollable, appears at top on mobile -->
 <div class="modal-overlay" id="paymentModal">
   <div class="modal">
     <div class="modal-icon">🎓</div>
     <div class="modal-title">Course Matching Ready!</div>
-    <div class="modal-desc">To view your personalized KUCCPS degree recommendations, complete a small verification payment.</div>
+    <div class="modal-desc">Complete a one-time M-PESA payment to unlock your personalized KUCCPS course recommendations.</div>
 
     <div class="payment-features">
       <div class="payment-feature">✅ Fast &amp; secure M-PESA STK Push</div>
@@ -186,8 +292,8 @@
 
     <div style="background:var(--blue-light);border-radius:12px;padding:14px;margin-bottom:20px;text-align:left;">
       <div style="font-size:0.78rem;color:var(--gray);margin-bottom:4px">Amount</div>
-      <div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:var(--blue)">KSh 1</div>
-      <div style="font-size:0.78rem;color:var(--gray)">One-time verification fee</div>
+      <div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:var(--blue)">KSh 150</div>
+      <div style="font-size:0.78rem;color:var(--gray)">One-time course recommendation fee</div>
     </div>
 
     <div class="form-row" style="text-align:left;margin-bottom:16px">
@@ -199,7 +305,7 @@
 
     <div style="display:flex;flex-direction:column;gap:10px">
       <button class="btn btn-green" id="payBtn" onclick="initiatePayment()" style="justify-content:center;font-size:1rem;padding:16px">
-        💳 Pay KSh 1 Now
+        💳 Pay KSh 150 Now
       </button>
       <button class="btn" id="checkStatusBtn" onclick="checkPaymentStatus()" style="justify-content:center;background:var(--blue-light);color:var(--blue);padding:12px;display:none">
         🔄 Check Payment Status
@@ -219,13 +325,9 @@
   </a>
 </div>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-grid">
-    <div>
-      <div class="nav-logo" style="color:white;margin-bottom:0"><div class="logo-icon">🎓</div>SmartFuture Career Hub</div>
-      <p class="footer-brand-desc">Empowering Kenyan students with accurate KUCCPS career guidance.</p>
-    </div>
+    <div><div class="nav-logo" style="color:white;margin-bottom:0"><div class="logo-icon">🎓</div>SmartFuture Career Hub</div><p class="footer-brand-desc">Empowering Kenyan students with accurate KUCCPS career guidance.</p></div>
     <div><div class="footer-col-title">Pages</div><ul class="footer-links"><li><a href="index.html">🏠 Home</a></li><li><a href="courses.html">🎓 Courses</a></li><li><a href="universities.html">🏫 Universities</a></li><li><a href="resources.html">📚 Resources</a></li></ul></div>
     <div><div class="footer-col-title">Info</div><ul class="footer-links"><li><a href="about.html">ℹ️ About</a></li><li><a href="contact.html">📞 Contact</a></li></ul></div>
     <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0769642043">📱 0769 642 043</a></li><li><a href="tel:0711416574">📱 0711 416 574</a></li></ul></div>
